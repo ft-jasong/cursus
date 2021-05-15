@@ -6,12 +6,11 @@
 /*   By: jasong <jasong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 19:04:06 by jasong            #+#    #+#             */
-/*   Updated: 2021/05/13 20:30:11 by jasong           ###   ########.fr       */
+/*   Updated: 2021/05/15 15:09:09 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
