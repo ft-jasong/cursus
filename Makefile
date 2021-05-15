@@ -6,7 +6,7 @@
 #    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:08:35 by jasong            #+#    #+#              #
-#    Updated: 2021/05/15 22:08:44 by jasong           ###   ########.fr        #
+#    Updated: 2021/05/15 23:28:19 by jasong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,3 +53,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean bonus fclean re
