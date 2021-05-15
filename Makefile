@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jasong <jasong@student.42seoul.kr>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/05/15 22:08:35 by jasong            #+#    #+#              #
+#    Updated: 2021/05/15 22:08:44 by jasong           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
 
@@ -17,19 +29,25 @@ BSRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
 OBJECTS = $(SOURCES:.c=.o)
 BOBJS = $(BSRCS:.c=.o)
 
+ifdef BONUS_FLAG
+	OBJ_SWITCH = $(OBJECTS) $(BOBJS)
+else
+	OBJ_SWITCH = $(OBJECTS)
+endif
+
 all: $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
-$(NAME): $(OBJECTS)
+$(NAME): $(OBJ_SWITCH)
 	ar -cr $@ $^
 
 clean:
 	rm -f $(OBJECTS) $(BOBJS)
 
-bonus: $(OBJECTS) $(BOBJS)
-	ar -cr $(NAME) $^
+bonus: 
+	$(MAKE) BONUS_FLAG=1 $(NAME)
 
 fclean: clean
 	rm -f $(NAME)

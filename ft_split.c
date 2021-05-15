@@ -6,7 +6,7 @@
 /*   By: jasong <jasong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 21:59:09 by jasong            #+#    #+#             */
-/*   Updated: 2021/05/13 20:22:00 by jasong           ###   ########.fr       */
+/*   Updated: 2021/05/15 20:31:40 by jasong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static size_t	split_process(const char *s, char **ret, char c, size_t cnt)
 		s = find_end(begin, c, &begin);
 		ret[i] = (char *)malloc(s - begin + 1);
 		if (!ret[i])
-			return (i);
+			return (++i);
 		ft_strlcpy(ret[i++], begin, s - begin + 1);
 		begin = (char *)s;
 	}
@@ -98,6 +98,6 @@ char			**ft_split(char const *s, char c)
 		return (NULL);
 	ret[cnt] = NULL;
 	if ((i = split_process(s, ret, c, cnt)))
-		return (protect_free(ret, i));
+		return (protect_free(ret, i - 1));
 	return (ret);
 }
